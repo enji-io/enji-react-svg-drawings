@@ -48,6 +48,9 @@ web_modules/
 # TypeScript cache
 *.tsbuildinfo
 
+# Generated code map (built at build time)
+src/lib/component-code-map.json
+
 # Optional npm cache directory
 .npm
 
