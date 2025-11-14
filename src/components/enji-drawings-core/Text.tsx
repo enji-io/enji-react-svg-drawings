@@ -29,7 +29,7 @@ const Text = ({
   textAnchor = 'middle',
   transform,
   className,
-  dominantBaseline,
+  dominantBaseline = 'middle',
 }: TextProps) => {
   return (
     <text
