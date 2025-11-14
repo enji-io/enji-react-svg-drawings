@@ -20,6 +20,50 @@ const VALID_COMPONENTS = [
   'TripleBendBar',
 ] as const;
 
+// Cache for the code map
+let codeMapCache: Record<string, string> | null = null;
+
+/**
+ * Loads the component code map from the generated JSON file
+ */
+async function loadCodeMap(): Promise<Record<string, string>> {
+  if (codeMapCache) {
+    return codeMapCache;
+  }
+
+  try {
+    // Try to load from the generated code map file (build-time approach)
+    const codeMapPath = path.join(process.cwd(), 'src/lib/component-code-map.json');
+    const codeMapContent = await fs.readFile(codeMapPath, 'utf8');
+    codeMapCache = JSON.parse(codeMapContent);
+    return codeMapCache!;
+  } catch (error) {
+    // Fallback: try to read files directly (for development)
+    console.warn('Code map not found, falling back to direct file reading');
+    codeMapCache = {};
+
+    for (const component of VALID_COMPONENTS) {
+      const possiblePaths = [
+        path.join(process.cwd(), 'src/components/enji-drawings-core', `${component}.tsx`),
+        path.join(process.cwd(), '.next/server/app/src/components/enji-drawings-core', `${component}.tsx`),
+      ];
+
+      for (const filePath of possiblePaths) {
+        try {
+          const content = await fs.readFile(filePath, 'utf8');
+          codeMapCache[component] = content;
+          break;
+        } catch {
+          // Continue to next path
+          continue;
+        }
+      }
+    }
+
+    return codeMapCache;
+  }
+}
+
 /**
  * Sanitizes and validates component name
  */
@@ -40,38 +84,33 @@ function sanitizeComponentName(component: string): string | null {
   return sanitized;
 }
 
-export async function GET(request: Request, { params }: { params: { component: string } }) {
+export async function GET(
+  request: Request,
+  { params }: { params: Promise<{ component: string }> | { component: string } }
+) {
   try {
+    // Await params if it's a Promise (Next.js 15+)
+    const resolvedParams = params instanceof Promise ? await params : params;
+
     // Validate and sanitize component name
-    const sanitizedComponent = sanitizeComponentName(params.component);
+    const sanitizedComponent = sanitizeComponentName(resolvedParams.component);
 
     if (!sanitizedComponent) {
       return NextResponse.json({ error: 'Invalid component name' }, { status: 400 });
     }
 
-    // Construct safe file path (no path traversal possible)
-    const filePath = path.join(process.cwd(), 'src/components/enji-drawings-core', `${sanitizedComponent}.tsx`);
+    // Load the code map
+    const codeMap = await loadCodeMap();
+    const content = codeMap[sanitizedComponent];
 
-    // Verify the file is within the expected directory
-    const expectedDir = path.join(process.cwd(), 'src/components/enji-drawings-core');
-    const resolvedPath = path.resolve(filePath);
-    const resolvedDir = path.resolve(expectedDir);
-
-    if (!resolvedPath.startsWith(resolvedDir)) {
-      return NextResponse.json({ error: 'Invalid file path' }, { status: 400 });
+    if (!content) {
+      return NextResponse.json({ error: 'Component not found' }, { status: 404 });
     }
 
-    // Read file
-    const content = await fs.readFile(filePath, 'utf8');
     return NextResponse.json({ code: content });
   } catch (error) {
     // Don't expose internal error details
     console.error('Error reading component code:', error);
-
-    // Check if it's a file not found error
-    if (error instanceof Error && 'code' in error && error.code === 'ENOENT') {
-      return NextResponse.json({ error: 'Component not found' }, { status: 404 });
-    }
 
     return NextResponse.json({ error: 'Failed to read component code' }, { status: 500 });
   }
