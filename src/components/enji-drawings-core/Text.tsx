@@ -1,9 +1,9 @@
-import React from 'react';
-import { Point } from '@/types/geometry';
+import type { ReactNode } from 'react';
+import type { Point } from '@/types/geometry';
 
 interface TextProps {
   position: Point;
-  children: React.ReactNode;
+  children: ReactNode;
   fontSize?: number;
   fill?: string;
   textAnchor?: 'start' | 'middle' | 'end';
@@ -14,8 +14,6 @@ interface TextProps {
     | 'middle'
     | 'central'
     | 'hanging'
-    | 'left'
-    | 'right'
     | 'text-before-edge'
     | 'text-after-edge'
     | 'ideographic'
@@ -23,7 +21,7 @@ interface TextProps {
     | 'mathematical';
 }
 
-const Text: React.FC<TextProps> = ({
+const Text = ({
   position,
   children,
   fontSize = 12,
@@ -31,8 +29,8 @@ const Text: React.FC<TextProps> = ({
   textAnchor = 'middle',
   transform,
   className,
-  dominantBaseline = 'middle',
-}) => {
+  dominantBaseline,
+}: TextProps) => {
   return (
     <text
       className={className}
