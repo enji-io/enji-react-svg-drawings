@@ -1,0 +1,114 @@
+# Cursor Rules for enji-react-svg-drawings
+
+## Project Overview
+This is a parametric drawing system built with React, Next.js, and SVG. It demonstrates how to create technical drawings (specifically structural engineering drawings) using component-based architecture.
+
+## Architecture Patterns
+
+### Component Organization
+- **Core Drawing Components** (`src/components/enji-drawings-core/`): Reusable SVG drawing primitives
+  - These are pure React components that render SVG elements
+  - All components are exported from `index.ts` using the `@enji-drawings-core` alias
+  - Components accept props for parametric control (dimensions, positions, styles)
+
+- **Feature Components** (`src/features/`): Complete parametric drawings composed from core components
+  - Example: `RectangularSectionRC.tsx` combines multiple core components to create a full drawing
+
+- **UI Components** (`src/components/ui/`): Reusable UI elements (shadcn/ui based)
+  - Used for settings panels, forms, and application UI
+
+### Key Conventions
+
+1. **Import Aliases**:
+   - `@/` → `src/`
+   - `@enji-drawings-core` → `src/components/enji-drawings-core`
+
+2. **Component Patterns**:
+   - Core drawing components use SVG elements directly
+   - All drawing components should accept a `position` or `startPoint` prop (Point type)
+   - Use TypeScript interfaces for all component props
+   - Components should be pure and predictable (same props = same output)
+
+3. **State Management**:
+   - State is lifted to page components or feature components
+   - Use React hooks (useState, useRef) for local state
+   - Parameters flow down from parent to child components
+
+4. **Styling**:
+   - Use Tailwind CSS utility classes
+   - Follow shadcn/ui patterns for UI components
+   - SVG elements use inline styles or className for Tailwind classes
+
+5. **TypeScript**:
+   - All components must be typed
+   - Use interfaces for props
+   - Geometry types are defined in `src/types/geometry.ts`
+
+## File Structure Guidelines
+
+### Creating New Core Components
+1. Create component in `src/components/enji-drawings-core/`
+2. Export from `src/components/enji-drawings-core/index.ts`
+3. Add to navigation in `src/config/navigation.ts` if it should appear in docs
+4. Follow naming: PascalCase, descriptive (e.g., `DimensionLine.tsx`)
+
+### Creating New Feature Drawings
+1. Create feature directory: `src/features/[feature-name]/`
+2. Create component: `components/[FeatureName].tsx`
+3. Create page: `src/app/(detailings)/[feature-name]/page.tsx`
+4. Add to navigation: `src/config/navigation.ts`
+
+### SVG Drawing Best Practices
+- Use SVG coordinate system (origin at top-left, y increases downward)
+- All measurements should be in consistent units (typically millimeters for engineering drawings)
+- Use `transform` attributes for positioning and rotation
+- Keep SVG elements semantic and accessible
+- Use `viewBox` for responsive scaling
+
+## Common Tasks
+
+### Adding a New Drawing Primitive
+1. Create component in `enji-drawings-core/`
+2. Accept props for position, dimensions, and styling
+3. Return SVG elements wrapped in `<g>` (group) if needed
+4. Export from `index.ts`
+5. Document with JSDoc comments
+
+### Adding a New Parametric Drawing
+1. Create feature component that composes core components
+2. Accept all parameters as props
+3. Calculate positions and dimensions from parameters
+4. Create page component with state management
+5. Add settings panel for user input
+6. Include export functionality (PDF, PNG, SVG)
+
+### Modifying Existing Components
+- Maintain backward compatibility when possible
+- Update TypeScript types if props change
+- Test with existing feature components
+- Update documentation if behavior changes
+
+## Code Style
+
+- Use functional components with TypeScript
+- Prefer named exports for components
+- Use descriptive variable names
+- Add JSDoc comments for complex calculations
+- Keep components focused on single responsibility
+- Extract complex calculations to utility functions
+
+## Testing Considerations
+
+- Components should be testable in isolation
+- SVG rendering can be tested with React Testing Library
+- Parameter calculations should be pure functions when possible
+- Consider visual regression testing for drawings
+
+## AI Assistant Guidelines
+
+When working with AI assistants:
+- Reference component names exactly as they appear in the codebase
+- Use the `@enji-drawings-core` alias when importing core components
+- Follow existing patterns for similar components
+- Maintain TypeScript types for all new code
+- Keep SVG coordinate system conventions consistent
