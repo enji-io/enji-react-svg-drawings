@@ -25,11 +25,7 @@ function DocsContent({ children }: { children: React.ReactNode }) {
   return (
     <div className="max-w-5xl">
       <div className="flex flex-col gap-8">
-        <Tabs
-          key={pathname}
-          defaultValue="demo"
-          className="w-full space-y-6"
-        >
+        <Tabs key={pathname} defaultValue="demo" className="w-full space-y-6">
           <TabsList className="w-full justify-start border-b rounded-none p-0 h-12 bg-transparent">
             <TabsTrigger
               value="demo"
@@ -46,17 +42,11 @@ function DocsContent({ children }: { children: React.ReactNode }) {
             </TabsTrigger>
           </TabsList>
 
-          <TabsContent
-            value="demo"
-            className="mt-6 min-h-[400px]"
-          >
+          <TabsContent value="demo" className="mt-6 min-h-[400px]">
             {children}
           </TabsContent>
 
-          <TabsContent
-            value="code"
-            className="mt-6"
-          >
+          <TabsContent value="code" className="mt-6">
             <div className="rounded-lg overflow-hidden relative">
               <Button
                 size="icon"

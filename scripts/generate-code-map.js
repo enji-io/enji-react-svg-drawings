@@ -1,5 +1,5 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 
 const COMPONENTS_DIR = path.join(__dirname, '../src/components/enji-drawings-core');
 const OUTPUT_FILE = path.join(__dirname, '../src/lib/component-code-map.json');

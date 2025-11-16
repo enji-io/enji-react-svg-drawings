@@ -1,5 +1,5 @@
-import React from 'react';
-import { Point } from '@/types/geometry';
+import type React from 'react';
+import type { Point } from '@/types/geometry';
 
 interface StraightBarProps {
   position: Point;

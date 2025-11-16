@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 
 interface ArrowMarkerProps {
   id: string;
@@ -19,10 +19,7 @@ const ArrowMarker: React.FC<ArrowMarkerProps> = ({ id, fill = 'black', markerWid
         refY="5"
         viewBox="0 0 10 10"
       >
-        <path
-          d="M 10 0 L 0 5 L 10 10 z"
-          fill={fill}
-        />
+        <path d="M 10 0 L 0 5 L 10 10 z" fill={fill} />
       </marker>
       <marker
         id={`${id}-end`}
@@ -33,10 +30,7 @@ const ArrowMarker: React.FC<ArrowMarkerProps> = ({ id, fill = 'black', markerWid
         refY="5"
         viewBox="0 0 10 10"
       >
-        <path
-          d="M 0 0 L 10 5 L 0 10 z"
-          fill={fill}
-        />
+        <path d="M 0 0 L 10 5 L 0 10 z" fill={fill} />
       </marker>
     </>
   );

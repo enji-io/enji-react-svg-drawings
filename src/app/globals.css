@@ -3,13 +3,16 @@
 @tailwind utilities;
 
 @media print {
-  html, body {
+  html,
+  body {
     height: 100%;
     margin: 0 !important;
     padding: 0 !important;
   }
 
-  button, select, .no-print {
+  button,
+  select,
+  .no-print {
     display: none !important;
   }
 

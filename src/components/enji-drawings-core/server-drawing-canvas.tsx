@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { Point } from '@/types/geometry';
+import type { Point } from '@/types/geometry';
 import { RotateCw, ZoomIn, ZoomOut } from 'lucide-react';
 
 interface ServerDrawingGridProps {
@@ -122,32 +122,15 @@ export function ServerDrawingControls({
 }: ServerDrawingControlsProps) {
   return (
     <div className="absolute top-4 right-4 flex flex-col gap-2 no-print">
-      <Button
-        variant="outline"
-        size="icon"
-        disabled={zoom >= maxZoom}
-        title="Zoom in"
-        onClick={onZoomIn}
-      >
+      <Button variant="outline" size="icon" disabled={zoom >= maxZoom} title="Zoom in" onClick={onZoomIn}>
         <ZoomIn className="h-4 w-4" />
         <span className="sr-only">Zoom in</span>
       </Button>
-      <Button
-        variant="outline"
-        size="icon"
-        disabled={zoom <= minZoom}
-        title="Zoom out"
-        onClick={onZoomOut}
-      >
+      <Button variant="outline" size="icon" disabled={zoom <= minZoom} title="Zoom out" onClick={onZoomOut}>
         <ZoomOut className="h-4 w-4" />
         <span className="sr-only">Zoom out</span>
       </Button>
-      <Button
-        variant="outline"
-        size="icon"
-        title="Reset view"
-        onClick={onRecenter}
-      >
+      <Button variant="outline" size="icon" title="Reset view" onClick={onRecenter}>
         <RotateCw className="h-4 w-4" />
         <span className="sr-only">Reset view</span>
       </Button>

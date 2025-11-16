@@ -2,7 +2,7 @@
 
 import {
   RectangularReinforcedConcreteSection,
-  RectangularReinforcedConcreteSectionProps,
+  type RectangularReinforcedConcreteSectionProps,
 } from '@/features/rectangular-section/components/RectangularSectionRC';
 import { RectangularSectionSettings } from '@/components/RectangularSectionSettings';
 import { PrintOptions } from '@/components/PrintOptions';
@@ -49,13 +49,10 @@ export default function RectangularRCPage() {
             labelColor="#6b7280"
             labelFontSize={10}
           >
-            <RectangularReinforcedConcreteSection
-              {...props}
-              containerRef={containerRef}
-            />
+            <RectangularReinforcedConcreteSection {...props} containerRef={containerRef} />
           </DrawingCanvas>
         </div>
-        <div className="flex flex-row gap-4 no-print">
+        <div className="flex flex-col gap-4 no-print">
           <RectangularSectionSettings
             {...props}
             onPropsChange={(newProps: Partial<RectangularReinforcedConcreteSectionProps>) =>
@@ -68,11 +65,7 @@ export default function RectangularRCPage() {
               })
             }
           />
-          <PrintOptions
-            containerRef={containerRef}
-            width={800}
-            height={700}
-          />
+          <PrintOptions containerRef={containerRef} width={800} height={700} />
         </div>
       </div>
     </div>

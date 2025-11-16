@@ -12,7 +12,7 @@ import {
   TripleBendBar,
   FourBendBar,
 } from '@enji-drawings-core';
-import { ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
 interface Example {
   demo: ReactElement;
@@ -26,34 +26,19 @@ export const examples: Examples = {
   Text: {
     demo: (
       <>
-        <Text
-          position={{ x: 100, y: 100 }}
-          fontSize={12}
-        >
+        <Text position={{ x: 100, y: 100 }} fontSize={12}>
           Regular Text
         </Text>
 
-        <Text
-          position={{ x: 100, y: 150 }}
-          fontSize={16}
-          fill="blue"
-        >
+        <Text position={{ x: 100, y: 150 }} fontSize={16} fill="blue">
           Blue Larger Text
         </Text>
 
-        <Text
-          position={{ x: 100, y: 200 }}
-          fontSize={14}
-          textAnchor="middle"
-        >
+        <Text position={{ x: 100, y: 200 }} fontSize={14} textAnchor="middle">
           Center Aligned Text
         </Text>
 
-        <Text
-          position={{ x: 100, y: 250 }}
-          fontSize={12}
-          transform="rotate(-45 100,250)"
-        >
+        <Text position={{ x: 100, y: 250 }} fontSize={12} transform="rotate(-45 100,250)">
           Rotated Text
         </Text>
       </>
@@ -62,77 +47,25 @@ export const examples: Examples = {
   RectangularOutline: {
     demo: (
       <>
-        <RectangularOutline
-          position={{ x: 100, y: 100 }}
-          width={200}
-          height={150}
-          hatch="none"
-        />
+        <RectangularOutline position={{ x: 100, y: 100 }} width={200} height={150} hatch="none" />
 
-        <RectangularOutline
-          position={{ x: 400, y: 100 }}
-          width={200}
-          height={150}
-          hatch="concrete"
-        />
+        <RectangularOutline position={{ x: 400, y: 100 }} width={200} height={150} hatch="concrete" />
 
-        <RectangularOutline
-          position={{ x: 100, y: 300 }}
-          width={200}
-          height={150}
-          strokeColor="blue"
-          strokeWidth={1}
-        />
+        <RectangularOutline position={{ x: 100, y: 300 }} width={200} height={150} strokeColor="blue" strokeWidth={1} />
       </>
     ),
   },
   DimensionLine: {
     demo: (
       <>
-        <DimensionLine
-          start={{ x: 100, y: 100 }}
-          end={{ x: 300, y: 100 }}
-          label="200"
-        />
-        <DimensionLine
-          switchPosition
-          start={{ x: 100, y: 150 }}
-          end={{ x: 300, y: 150 }}
-          label="200"
-        />
-        <DimensionLine
-          start={{ x: 500, y: 100 }}
-          end={{ x: 400, y: 300 }}
-          label="200"
-        />
-        <DimensionLine
-          start={{ x: 100, y: 200 }}
-          end={{ x: 200, y: 400 }}
-          label="200"
-        />
-        <DimensionLine
-          switchPosition
-          start={{ x: 600, y: 200 }}
-          end={{ x: 500, y: 400 }}
-          label="200"
-        />
-        <DimensionLine
-          switchPosition
-          start={{ x: 200, y: 300 }}
-          end={{ x: 300, y: 500 }}
-          label="200"
-        />{' '}
-        <DimensionLine
-          switchPosition
-          start={{ x: 700, y: 200 }}
-          end={{ x: 700, y: 400 }}
-          label="200"
-        />
-        <DimensionLine
-          start={{ x: 650, y: 300 }}
-          end={{ x: 650, y: 500 }}
-          label="200"
-        />
+        <DimensionLine start={{ x: 100, y: 100 }} end={{ x: 300, y: 100 }} label="200" />
+        <DimensionLine switchPosition start={{ x: 100, y: 150 }} end={{ x: 300, y: 150 }} label="200" />
+        <DimensionLine start={{ x: 500, y: 100 }} end={{ x: 400, y: 300 }} label="200" />
+        <DimensionLine start={{ x: 100, y: 200 }} end={{ x: 200, y: 400 }} label="200" />
+        <DimensionLine switchPosition start={{ x: 600, y: 200 }} end={{ x: 500, y: 400 }} label="200" />
+        <DimensionLine switchPosition start={{ x: 200, y: 300 }} end={{ x: 300, y: 500 }} label="200" />{' '}
+        <DimensionLine switchPosition start={{ x: 700, y: 200 }} end={{ x: 700, y: 400 }} label="200" />
+        <DimensionLine start={{ x: 650, y: 300 }} end={{ x: 650, y: 500 }} label="200" />
       </>
     ),
   },
@@ -239,30 +172,13 @@ export const examples: Examples = {
   DrawingCanvas: {
     demo: (
       <>
-        <RectangularOutline
-          position={{ x: 100, y: 100 }}
-          width={200}
-          height={150}
-          hatch="concrete"
-        />
+        <RectangularOutline position={{ x: 100, y: 100 }} width={200} height={150} hatch="concrete" />
 
-        <DimensionLine
-          switchPosition
-          start={{ x: 100, y: 300 }}
-          end={{ x: 300, y: 300 }}
-          label="200"
-        />
+        <DimensionLine switchPosition start={{ x: 100, y: 300 }} end={{ x: 300, y: 300 }} label="200" />
 
-        <ReferencePoint
-          position={{ x: 200, y: 175 }}
-          label={{ x: 'Center', y: 'Center' }}
-        />
+        <ReferencePoint position={{ x: 200, y: 175 }} label={{ x: 'Center', y: 'Center' }} />
 
-        <Text
-          position={{ x: 350, y: 80 }}
-          fontSize={14}
-          textAnchor="middle"
-        >
+        <Text position={{ x: 350, y: 80 }} fontSize={14} textAnchor="middle">
           View only canvas with grid
         </Text>
       </>
@@ -271,24 +187,9 @@ export const examples: Examples = {
   StraightBar: {
     demo: (
       <>
-        <StraightBar
-          position={{ x: 100, y: 100 }}
-          length={200}
-          diameter={25}
-        />
-        <StraightBar
-          position={{ x: 100, y: 200 }}
-          length={300}
-          diameter={25}
-          color="red"
-        />
-        <StraightBar
-          position={{ x: 100, y: 300 }}
-          length={400}
-          diameter={50}
-          color="blue"
-          rotation={-30}
-        />
+        <StraightBar position={{ x: 100, y: 100 }} length={200} diameter={25} />
+        <StraightBar position={{ x: 100, y: 200 }} length={300} diameter={25} color="red" />
+        <StraightBar position={{ x: 100, y: 300 }} length={400} diameter={50} color="blue" rotation={-30} />
       </>
     ),
   },

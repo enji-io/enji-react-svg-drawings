@@ -14,7 +14,7 @@ import {
   Tally3,
   Tally2,
   Tally1,
-  LucideIcon,
+  type LucideIcon,
 } from 'lucide-react';
 import * as enjiDrawingsCore from '@/components/enji-drawings-core';
 

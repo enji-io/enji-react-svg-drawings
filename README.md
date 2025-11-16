@@ -172,7 +172,7 @@ This project uses the **standard "vibe coding" stack** that's compatible with mo
   - **PDF**: jsPDF + svg2pdf.js for vector-quality PDF export
   - **PNG**: html2canvas for raster image export
   - **SVG**: Direct SVG serialization
-- **Development**: TypeScript, ESLint, Prettier
+- **Development**: TypeScript, Biome (linting and formatting)
 - **AI Development**: Optimized for use with Cursor, GitHub Copilot, Lovable, Builder.io, and similar AI coding tools
 
 ## Getting Started
@@ -258,9 +258,10 @@ The entire drawing is rendered as SVG, allowing for:
 pnpm dev          # Start development server
 pnpm build        # Build for production
 pnpm start        # Start production server
-pnpm lint         # Run ESLint
-pnpm lint:fix     # Fix linting issues
-pnpm format       # Format code with Prettier
+pnpm lint         # Run Biome linter
+pnpm lint:fix     # Fix linting issues with Biome
+pnpm format       # Format code with Biome
+pnpm format:check # Check code formatting
 pnpm type-check   # Run TypeScript type checking
 ```
 

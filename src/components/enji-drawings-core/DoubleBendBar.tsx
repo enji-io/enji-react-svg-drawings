@@ -1,5 +1,5 @@
-import React from 'react';
-import { Point } from '@/types/geometry';
+import type React from 'react';
+import type { Point } from '@/types/geometry';
 import RadiusAnnotation from './RadiusAnnotation';
 import DimensionLine from './DimensionLine';
 import {
@@ -120,16 +120,8 @@ const DoubleBendBar: React.FC<DoubleBendBarProps> = ({
 
       {showRadius && (
         <>
-          <RadiusAnnotation
-            center={circleCenterFirst}
-            radius={firstInnerRadius}
-            color={color}
-          />
-          <RadiusAnnotation
-            center={circleCenterSecond}
-            radius={secondInnerRadius}
-            color={color}
-          />
+          <RadiusAnnotation center={circleCenterFirst} radius={firstInnerRadius} color={color} />
+          <RadiusAnnotation center={circleCenterSecond} radius={secondInnerRadius} color={color} />
         </>
       )}
       {showDimensions && (

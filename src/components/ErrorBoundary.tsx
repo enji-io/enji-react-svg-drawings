@@ -1,6 +1,6 @@
 'use client';
 
-import { Component, ErrorInfo, ReactNode } from 'react';
+import { Component, type ErrorInfo, type ReactNode } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { AlertTriangle } from 'lucide-react';
@@ -78,15 +78,14 @@ export class ErrorBoundary extends Component<Props, State> {
                 </div>
               )}
               <div className="flex gap-3">
-                <Button
-                  variant="default"
-                  onClick={this.handleReset}
-                >
+                <Button variant="default" onClick={this.handleReset}>
                   Try Again
                 </Button>
                 <Button
                   variant="outline"
-                  onClick={() => (window.location.href = '/')}
+                  onClick={() => {
+                    window.location.href = '/';
+                  }}
                 >
                   Go Home
                 </Button>

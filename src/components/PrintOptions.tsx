@@ -3,7 +3,8 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Printer } from 'lucide-react';
 import { exportToPDF, exportToPNG, exportToSVG } from '@/lib/export-utils';
-import { RefObject, useState } from 'react';
+import type { RefObject } from 'react';
+import { useState } from 'react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { AlertCircle } from 'lucide-react';
 
@@ -48,11 +49,8 @@ export function PrintOptions({ containerRef, width, height }: PrintOptionsProps)
 
   return (
     <div className="flex flex-col gap-2">
-      <Select
-        value={value}
-        onValueChange={handleValueChange}
-      >
-        <SelectTrigger className="w-[140px]">
+      <Select value={value} onValueChange={handleValueChange}>
+        <SelectTrigger className="w-full">
           <Printer className="mr-2 h-4 w-4" />
           <SelectValue placeholder="Export as..." />
         </SelectTrigger>
@@ -63,10 +61,7 @@ export function PrintOptions({ containerRef, width, height }: PrintOptionsProps)
         </SelectContent>
       </Select>
       {error && (
-        <Alert
-          variant="destructive"
-          className="w-[140px]"
-        >
+        <Alert variant="destructive" className="w-[140px]">
           <AlertCircle className="h-4 w-4" />
           <AlertTitle className="text-xs">Export failed</AlertTitle>
           <AlertDescription className="text-xs">{error}</AlertDescription>

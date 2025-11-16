@@ -1,4 +1,4 @@
-import { Bar, Point } from '../../types/geometry';
+import type { Bar, Point } from '../../types/geometry';
 
 export const getInitialBarPoints = (
   start: Point,

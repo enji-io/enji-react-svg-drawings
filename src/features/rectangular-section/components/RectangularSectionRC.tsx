@@ -1,7 +1,7 @@
-import { RefObject } from 'react';
+import type { RefObject } from 'react';
 import { DimensionLine, FullRectangleBar, RectangularOutline, RebarRow, Text } from '@enji-drawings-core';
-import { Point } from '@/types/geometry';
-import React from 'react';
+import type { Point } from '@/types/geometry';
+import type React from 'react';
 
 export interface RectangularReinforcedConcreteSectionProps {
   startPoint?: Point;
@@ -43,37 +43,20 @@ export const RectangularReinforcedConcreteSection: React.FC<RectangularReinforce
   return (
     <>
       {/* Section Title */}
-      <Text
-        fontSize={14}
-        position={{ x: startPoint.x + width / 2, y: startPoint.y - 40 }}
-        textAnchor="middle"
-      >
+      <Text fontSize={14} position={{ x: startPoint.x + width / 2, y: startPoint.y - 40 }} textAnchor="middle">
         RECTANGULAR RC SECTION
       </Text>
 
       {/* Material Specifications */}
-      <Text
-        fontSize={12}
-        position={{ x: startPoint.x + width + 40, y: startPoint.y + 20 }}
-        textAnchor="start"
-      >
+      <Text fontSize={12} position={{ x: startPoint.x + width + 40, y: startPoint.y + 20 }} textAnchor="start">
         {`Concrete: ${concreteGrade}`}
       </Text>
-      <Text
-        fontSize={12}
-        position={{ x: startPoint.x + width + 40, y: startPoint.y + 40 }}
-        textAnchor="start"
-      >
+      <Text fontSize={12} position={{ x: startPoint.x + width + 40, y: startPoint.y + 40 }} textAnchor="start">
         {`Reinforcement: ${rebarGrade}`}
       </Text>
 
       {/* Concrete outline with hatching */}
-      <RectangularOutline
-        hatch="concrete"
-        height={height}
-        position={startPoint}
-        width={width}
-      />
+      <RectangularOutline hatch="concrete" height={height} position={startPoint} width={width} />
 
       <FullRectangleBar
         height={height - 2 * cover}
@@ -163,32 +146,16 @@ export const RectangularReinforcedConcreteSection: React.FC<RectangularReinforce
       </Text>
 
       {/* Section notes */}
-      <Text
-        fontSize={10}
-        position={{ x: startPoint.x, y: startPoint.y + height + 60 }}
-        textAnchor="start"
-      >
+      <Text fontSize={10} position={{ x: startPoint.x, y: startPoint.y + height + 60 }} textAnchor="start">
         Notes:
       </Text>
-      <Text
-        fontSize={10}
-        position={{ x: startPoint.x, y: startPoint.y + height + 75 }}
-        textAnchor="start"
-      >
+      <Text fontSize={10} position={{ x: startPoint.x, y: startPoint.y + height + 75 }} textAnchor="start">
         1. All dimensions are in millimeters
       </Text>
-      <Text
-        fontSize={10}
-        position={{ x: startPoint.x, y: startPoint.y + height + 90 }}
-        textAnchor="start"
-      >
+      <Text fontSize={10} position={{ x: startPoint.x, y: startPoint.y + height + 90 }} textAnchor="start">
         {`2. Clear spacing between bottom bars: ${Math.round((width - 2 * (cover + stirrupBendingRadius)) / (bottomRebarCount - 1) - bottomRebarDiameter)}mm`}
       </Text>
-      <Text
-        fontSize={10}
-        position={{ x: startPoint.x, y: startPoint.y + height + 105 }}
-        textAnchor="start"
-      >
+      <Text fontSize={10} position={{ x: startPoint.x, y: startPoint.y + height + 105 }} textAnchor="start">
         {`3. Clear spacing between top bars: ${Math.round((width - 2 * (cover + stirrupBendingRadius)) / (topRebarCount - 1) - topRebarDiameter)}mm`}
       </Text>
     </>

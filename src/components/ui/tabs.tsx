@@ -10,11 +10,7 @@ const TabsList = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.List>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>
 >(({ className, children, ...props }, ref) => (
-  <TabsPrimitive.List
-    ref={ref}
-    asChild
-    {...props}
-  >
+  <TabsPrimitive.List ref={ref} asChild {...props}>
     <ServerTabsList className={className}>{children}</ServerTabsList>
   </TabsPrimitive.List>
 ));
@@ -24,15 +20,8 @@ const TabsTrigger = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
 >(({ className, children, ...props }, ref) => (
-  <TabsPrimitive.Trigger
-    ref={ref}
-    asChild
-    {...props}
-  >
-    <ServerTabTrigger
-      className={className}
-      isActive={false}
-    >
+  <TabsPrimitive.Trigger ref={ref} asChild {...props}>
+    <ServerTabTrigger className={className} isActive={false}>
       {children}
     </ServerTabTrigger>
   </TabsPrimitive.Trigger>
@@ -43,11 +32,7 @@ const TabsContent = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
 >(({ className, children, ...props }, ref) => (
-  <TabsPrimitive.Content
-    ref={ref}
-    asChild
-    {...props}
-  >
+  <TabsPrimitive.Content ref={ref} asChild {...props}>
     <ServerTabContent className={className}>{children}</ServerTabContent>
   </TabsPrimitive.Content>
 ));

@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs/promises';
-import path from 'path';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 
 // Allowlist of valid component names to prevent path traversal attacks
 const VALID_COMPONENTS = [
@@ -36,7 +36,10 @@ async function loadCodeMap(): Promise<Record<string, string>> {
     const codeMapPath = path.join(process.cwd(), 'src/lib/component-code-map.json');
     const codeMapContent = await fs.readFile(codeMapPath, 'utf8');
     codeMapCache = JSON.parse(codeMapContent);
-    return codeMapCache!;
+    if (!codeMapCache) {
+      throw new Error('Failed to parse code map');
+    }
+    return codeMapCache;
   } catch (error) {
     // Fallback: try to read files directly (for development)
     console.warn('Code map not found, falling back to direct file reading');
@@ -53,10 +56,7 @@ async function loadCodeMap(): Promise<Record<string, string>> {
           const content = await fs.readFile(filePath, 'utf8');
           codeMapCache[component] = content;
           break;
-        } catch {
-          // Continue to next path
-          continue;
-        }
+        } catch {}
       }
     }
 

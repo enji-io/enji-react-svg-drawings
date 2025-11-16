@@ -1,5 +1,5 @@
-import React from 'react';
-import { Point } from '@/types/geometry';
+import type React from 'react';
+import type { Point } from '@/types/geometry';
 import { Text, ArrowMarker } from '@enji-drawings-core';
 
 interface DimensionLineProps {
@@ -69,22 +69,8 @@ const DimensionLine: React.FC<DimensionLineProps> = ({
     <g>
       <ArrowMarker id="dimension-arrow" />
       {/* Thin extension lines connecting original points to dimension line */}
-      <line
-        stroke="gray"
-        strokeWidth="0.5"
-        x1={start.x}
-        y1={start.y}
-        x2={offsetStart.x}
-        y2={offsetStart.y}
-      />
-      <line
-        stroke="gray"
-        strokeWidth="0.5"
-        x1={end.x}
-        y1={end.y}
-        x2={offsetEnd.x}
-        y2={offsetEnd.y}
-      />
+      <line stroke="gray" strokeWidth="0.5" x1={start.x} y1={start.y} x2={offsetStart.x} y2={offsetStart.y} />
+      <line stroke="gray" strokeWidth="0.5" x1={end.x} y1={end.y} x2={offsetEnd.x} y2={offsetEnd.y} />
       {/* Main dimension line with arrows */}
       <line
         markerEnd="url(#dimension-arrow-end)"

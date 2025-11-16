@@ -27,10 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ErrorBoundary>
           <SidebarProvider>
             <div className="flex min-h-screen w-full">
-              <AppSidebar
-                menuItems={menuItems}
-                coreComponentItems={coreComponentItems}
-              />
+              <AppSidebar menuItems={menuItems} coreComponentItems={coreComponentItems} />
               <main className="flex-1 [overscroll-behavior:none]">
                 <div className="flex h-[61px] items-center border-b px-6">
                   <SidebarTrigger />

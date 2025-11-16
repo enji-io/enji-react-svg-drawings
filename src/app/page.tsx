@@ -14,11 +14,7 @@ export default function Home() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {coreComponentItems.map((item) => (
-          <Link
-            key={item.href}
-            href={item.href}
-            className="block transition-colors hover:no-underline"
-          >
+          <Link key={item.href} href={item.href} className="block transition-colors hover:no-underline">
             <Card className="h-full hover:bg-muted/50">
               <CardHeader>
                 <div className="flex items-center gap-2">

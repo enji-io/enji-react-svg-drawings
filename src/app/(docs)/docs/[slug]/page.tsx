@@ -67,12 +67,7 @@ export default function ComponentPage({ params }: Props) {
         </Alert>
       )}
       <div className="flex justify-start gap-4 border-2 border-gray-200 rounded-lg bg-white shadow-sm w-[800px]">
-        <DrawingCanvas
-          height={550}
-          gridSize={50}
-          labelInterval={50}
-          startPoint={{ x: 0, y: 0 }}
-        >
+        <DrawingCanvas height={550} gridSize={50} labelInterval={50} startPoint={{ x: 0, y: 0 }}>
           {example.demo}
         </DrawingCanvas>
       </div>

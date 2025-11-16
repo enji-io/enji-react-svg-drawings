@@ -1,5 +1,5 @@
-import React from 'react';
-import { Point } from '@/types/geometry';
+import type React from 'react';
+import type { Point } from '@/types/geometry';
 import RadiusAnnotation from './RadiusAnnotation';
 import DimensionLine from './DimensionLine';
 import {
@@ -195,26 +195,10 @@ const FourBendBar: React.FC<FourBendBarProps> = ({
 
       {showRadius && (
         <>
-          <RadiusAnnotation
-            center={circleCenterFirst}
-            radius={firstInnerRadius}
-            color={color}
-          />
-          <RadiusAnnotation
-            center={circleCenterSecond}
-            radius={secondInnerRadius}
-            color={color}
-          />
-          <RadiusAnnotation
-            center={circleCenterThird}
-            radius={thirdInnerRadius}
-            color={color}
-          />
-          <RadiusAnnotation
-            center={circleCenterFourth}
-            radius={fourthInnerRadius}
-            color={color}
-          />
+          <RadiusAnnotation center={circleCenterFirst} radius={firstInnerRadius} color={color} />
+          <RadiusAnnotation center={circleCenterSecond} radius={secondInnerRadius} color={color} />
+          <RadiusAnnotation center={circleCenterThird} radius={thirdInnerRadius} color={color} />
+          <RadiusAnnotation center={circleCenterFourth} radius={fourthInnerRadius} color={color} />
         </>
       )}
 

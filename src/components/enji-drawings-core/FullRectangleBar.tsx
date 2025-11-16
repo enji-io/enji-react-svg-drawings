@@ -1,5 +1,5 @@
-import React from 'react';
-import { Point } from '@/types/geometry';
+import type React from 'react';
+import type { Point } from '@/types/geometry';
 
 interface FullRectangleBarProps {
   position: Point;
@@ -168,25 +168,9 @@ const FullRectangleBar: React.FC<FullRectangleBarProps> = ({
 
   return (
     <g>
-      <path
-        d={upperHookPath}
-        fill="white"
-        stroke={color}
-        strokeWidth="1"
-      />
-      <path
-        d={`${outerPath} ${innerPath}`}
-        fill="white"
-        fillRule="evenodd"
-        stroke={color}
-        strokeWidth="1"
-      />
-      <path
-        d={lowerHookPath}
-        fill="white"
-        stroke={color}
-        strokeWidth="1"
-      />
+      <path d={upperHookPath} fill="white" stroke={color} strokeWidth="1" />
+      <path d={`${outerPath} ${innerPath}`} fill="white" fillRule="evenodd" stroke={color} strokeWidth="1" />
+      <path d={lowerHookPath} fill="white" stroke={color} strokeWidth="1" />
     </g>
   );
 };

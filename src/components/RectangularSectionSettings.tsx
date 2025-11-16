@@ -38,13 +38,9 @@ export function RectangularSectionSettings({
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button
-          variant="outline"
-          size="icon"
-          className="size-9"
-        >
+        <Button variant="outline" className="gap-2 py-[8px] px-[12px]">
           <Settings2 className="h-4 w-4" />
-          <span className="sr-only">Open settings</span>
+          <span className="font-normal">Open settings</span>
         </Button>
       </SheetTrigger>
       <SheetContent className="overflow-y-auto">
@@ -54,10 +50,7 @@ export function RectangularSectionSettings({
         </SheetHeader>
         <div className="grid gap-4 py-4 overflow-y-auto">
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label
-              htmlFor="width"
-              className="text-right"
-            >
+            <Label htmlFor="width" className="text-right">
               Width (mm)
             </Label>
             <Input
@@ -71,10 +64,7 @@ export function RectangularSectionSettings({
             />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label
-              htmlFor="height"
-              className="text-right"
-            >
+            <Label htmlFor="height" className="text-right">
               Height (mm)
             </Label>
             <Input
@@ -88,10 +78,7 @@ export function RectangularSectionSettings({
             />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label
-              htmlFor="cover"
-              className="text-right"
-            >
+            <Label htmlFor="cover" className="text-right">
               Cover (mm)
             </Label>
             <Input
@@ -106,10 +93,7 @@ export function RectangularSectionSettings({
 
           {/* Bottom Reinforcement */}
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label
-              htmlFor="bottomRebarCount"
-              className="text-right"
-            >
+            <Label htmlFor="bottomRebarCount" className="text-right">
               Bottom Bars
             </Label>
             <Input
@@ -122,10 +106,7 @@ export function RectangularSectionSettings({
             />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label
-              htmlFor="bottomRebarDiameter"
-              className="text-right"
-            >
+            <Label htmlFor="bottomRebarDiameter" className="text-right">
               Bottom Ø (mm)
             </Label>
             <Input
@@ -142,10 +123,7 @@ export function RectangularSectionSettings({
 
           {/* Top Reinforcement */}
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label
-              htmlFor="topRebarCount"
-              className="text-right"
-            >
+            <Label htmlFor="topRebarCount" className="text-right">
               Top Bars
             </Label>
             <Input
@@ -158,10 +136,7 @@ export function RectangularSectionSettings({
             />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label
-              htmlFor="topRebarDiameter"
-              className="text-right"
-            >
+            <Label htmlFor="topRebarDiameter" className="text-right">
               Top Ø (mm)
             </Label>
             <Input
@@ -176,10 +151,7 @@ export function RectangularSectionSettings({
 
           {/* Stirrups */}
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label
-              htmlFor="stirrupThickness"
-              className="text-right"
-            >
+            <Label htmlFor="stirrupThickness" className="text-right">
               Stirrup Ø (mm)
             </Label>
             <Input
@@ -197,10 +169,7 @@ export function RectangularSectionSettings({
             />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label
-              htmlFor="stirrupSpacing"
-              className="text-right"
-            >
+            <Label htmlFor="stirrupSpacing" className="text-right">
               Spacing (mm)
             </Label>
             <Input
@@ -215,10 +184,7 @@ export function RectangularSectionSettings({
 
           {/* Material Properties */}
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label
-              htmlFor="concreteGrade"
-              className="text-right"
-            >
+            <Label htmlFor="concreteGrade" className="text-right">
               Concrete
             </Label>
             <Input
@@ -229,10 +195,7 @@ export function RectangularSectionSettings({
             />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label
-              htmlFor="rebarGrade"
-              className="text-right"
-            >
+            <Label htmlFor="rebarGrade" className="text-right">
               Steel
             </Label>
             <Input

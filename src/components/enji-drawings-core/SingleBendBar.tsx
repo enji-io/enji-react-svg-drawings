@@ -1,5 +1,5 @@
-import React from 'react';
-import { Point } from '@/types/geometry';
+import type React from 'react';
+import type { Point } from '@/types/geometry';
 import RadiusAnnotation from './RadiusAnnotation';
 import DimensionLine from './DimensionLine';
 import { getNextArcLinePoints, getInitialBarPath, getInitialBarPoints } from './mathematics-points-bending';

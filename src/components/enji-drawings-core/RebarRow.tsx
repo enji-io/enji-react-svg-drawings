@@ -1,5 +1,5 @@
-import React from 'react';
-import { Point } from '@/types/geometry';
+import type React from 'react';
+import type { Point } from '@/types/geometry';
 
 interface RebarRowProps {
   position: Point;
@@ -35,17 +35,20 @@ const RebarRow: React.FC<RebarRowProps> = ({
 
   return (
     <g className={className}>
-      {Array.from({ length: rebarCount }, (_, i) => (
-        <circle
-          key={`rebar-${i}`}
-          cx={adjustedStartX + (rebarCount === 1 ? adjustedWidth / 2 : i * spacing)}
-          cy={position.y}
-          fill="white"
-          stroke="black"
-          strokeWidth="1"
-          r={rebarDiameter / 2}
-        />
-      ))}
+      {Array.from({ length: rebarCount }, (_, i) => {
+        const cx = adjustedStartX + (rebarCount === 1 ? adjustedWidth / 2 : i * spacing);
+        return (
+          <circle
+            key={`rebar-${position.x}-${position.y}-${cx}`}
+            cx={cx}
+            cy={position.y}
+            fill="white"
+            stroke="black"
+            strokeWidth="1"
+            r={rebarDiameter / 2}
+          />
+        );
+      })}
     </g>
   );
 };

@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import type React from 'react';
+import { useState } from 'react';
 import { ServerDrawingGrid, ServerDrawingControls } from './server-drawing-canvas';
-import { Point } from '@/types/geometry';
+import type { Point } from '@/types/geometry';
 
 interface DrawingCanvasProps {
   width?: number;
@@ -102,7 +103,9 @@ const DrawingCanvas: React.FC<DrawingCanvasProps> = ({
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
+        aria-label="Drawing canvas"
       >
+        <title>Drawing canvas</title>
         <g>
           <ServerDrawingGrid
             gridStart={gridStart}
