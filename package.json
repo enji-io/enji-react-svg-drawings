@@ -11,6 +11,7 @@
   "scripts": {
     "preinstall": "node preinstall.cjs",
     "prebuild": "node scripts/generate-code-map.js",
+    "predev": "node scripts/generate-code-map.js",
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
