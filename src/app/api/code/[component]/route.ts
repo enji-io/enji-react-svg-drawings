@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
-import fs from 'node:fs/promises';
-import path from 'node:path';
+import componentCodeMap from '@/lib/component-code-map.json';
 
 // Allowlist of valid component names to prevent path traversal attacks
 const VALID_COMPONENTS = [
@@ -20,49 +19,8 @@ const VALID_COMPONENTS = [
   'TripleBendBar',
 ] as const;
 
-// Cache for the code map
-let codeMapCache: Record<string, string> | null = null;
-
-/**
- * Loads the component code map from the generated JSON file
- */
-async function loadCodeMap(): Promise<Record<string, string>> {
-  if (codeMapCache) {
-    return codeMapCache;
-  }
-
-  try {
-    // Try to load from the generated code map file (build-time approach)
-    const codeMapPath = path.join(process.cwd(), 'src/lib/component-code-map.json');
-    const codeMapContent = await fs.readFile(codeMapPath, 'utf8');
-    codeMapCache = JSON.parse(codeMapContent);
-    if (!codeMapCache) {
-      throw new Error('Failed to parse code map');
-    }
-    return codeMapCache;
-  } catch (error) {
-    // Fallback: try to read files directly (for development)
-    console.warn('Code map not found, falling back to direct file reading');
-    codeMapCache = {};
-
-    for (const component of VALID_COMPONENTS) {
-      const possiblePaths = [
-        path.join(process.cwd(), 'src/components/enji-drawings-core', `${component}.tsx`),
-        path.join(process.cwd(), '.next/server/app/src/components/enji-drawings-core', `${component}.tsx`),
-      ];
-
-      for (const filePath of possiblePaths) {
-        try {
-          const content = await fs.readFile(filePath, 'utf8');
-          codeMapCache[component] = content;
-          break;
-        } catch {}
-      }
-    }
-
-    return codeMapCache;
-  }
-}
+// Type assertion for the imported JSON
+const codeMap = componentCodeMap as Record<string, string>;
 
 /**
  * Sanitizes and validates component name
@@ -99,8 +57,7 @@ export async function GET(
       return NextResponse.json({ error: 'Invalid component name' }, { status: 400 });
     }
 
-    // Load the code map
-    const codeMap = await loadCodeMap();
+    // Get the component code from the imported code map
     const content = codeMap[sanitizedComponent];
 
     if (!content) {
