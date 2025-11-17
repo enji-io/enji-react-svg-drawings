@@ -1,5 +1,7 @@
 # Parametric Drawings with React & SVG
 
+<img src="./public/detailings-app-screenshot.png" alt="isolated" width="550"/>
+
 ## Overview
 
 This is an **experimental repository** that showcases the power of React components and SVG to create parametric, interactive technical drawings. Unlike traditional parametric modeling tools like Rhino Grasshopper or Dynamo, this project demonstrates how modern web technologies can be used to build sophisticated drawing applications that are:
