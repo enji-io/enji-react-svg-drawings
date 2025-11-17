@@ -298,7 +298,3 @@ This is an experimental repository designed for learning and exploration. Contri
 - **[Tailwind CSS Documentation](https://tailwindcss.com/docs)** - Utility-first CSS framework
 - **[SVG Tutorial](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial)** - Understanding SVG fundamentals
 - **[TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)** - Type-safe development
-
-## License
-
-[Add your license here]
