@@ -17,7 +17,7 @@ export interface RectangularReinforcedConcreteSectionProps {
   stirrupThickness?: number;
   stirrupBendingRadius?: number;
   stirrupSpacing?: number;
-  containerRef?: RefObject<HTMLDivElement>;
+  containerRef?: RefObject<HTMLDivElement | null>;
 }
 
 export const RectangularReinforcedConcreteSection: React.FC<RectangularReinforcedConcreteSectionProps> = ({

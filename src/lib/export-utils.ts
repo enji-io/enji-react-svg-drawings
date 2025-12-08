@@ -5,7 +5,7 @@ import { jsPDF } from 'jspdf';
 import { svg2pdf } from 'svg2pdf.js';
 
 interface ExportOptions {
-  containerRef: React.RefObject<HTMLDivElement>;
+  containerRef: React.RefObject<HTMLDivElement | null>;
   width?: number;
   height?: number;
 }
@@ -29,7 +29,7 @@ const restoreNoPrintElements = (noPrintElements: HTMLCollectionOf<Element>, orig
 export async function exportToPDF({
   containerRef,
 }: {
-  containerRef: React.RefObject<HTMLDivElement>;
+  containerRef: React.RefObject<HTMLDivElement | null>;
   width: number; // kept for interface compatibility
   height: number; // kept for interface compatibility
 }) {
