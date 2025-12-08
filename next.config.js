@@ -1,10 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   webpack: (config) => {
     config.module.rules.push({
       test: /\.raw\.tsx?$/,
@@ -12,13 +8,8 @@ const nextConfig = {
     });
     return config;
   },
-  experimental: {
-    turbo: {
-      rules: {
-        '*.raw.tsx': ['raw-loader'],
-      },
-    },
-  },
+  // Turbopack config (empty for now - webpack config handles raw-loader)
+  turbopack: {},
 };
 
 module.exports = nextConfig;

@@ -9,14 +9,15 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { AlertCircle } from 'lucide-react';
 
 interface Props {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export default function ComponentPage({ params }: Props) {
   const { setCode, codeCache, setCodeCache } = useDocsContext();
-  const example = examples[params.slug];
+  const resolvedParams = React.use(params);
+  const example = examples[resolvedParams.slug];
   const [fetchError, setFetchError] = React.useState<string | null>(null);
 
   if (!example) {
@@ -24,7 +25,7 @@ export default function ComponentPage({ params }: Props) {
   }
 
   React.useEffect(() => {
-    const componentName = params.slug;
+    const componentName = resolvedParams.slug;
 
     // If we have the code in cache, use it
     if (codeCache[componentName]) {
@@ -55,7 +56,7 @@ export default function ComponentPage({ params }: Props) {
         console.error('Error fetching code:', error);
         setFetchError(errorMessage);
       });
-  }, [params.slug, setCode, codeCache, setCodeCache]);
+  }, [resolvedParams.slug, setCode, codeCache, setCodeCache]);
 
   return (
     <div className="relative flex flex-col gap-4">

@@ -43,7 +43,7 @@ export function AppSidebar({ menuItems, coreComponentItems }: AppSidebarProps) {
               <SidebarMenu>
                 {menuItems.map((item) => (
                   <SidebarMenuItem key={item.href}>
-                    <Link passHref legacyBehavior href={item.href}>
+                    <Link href={item.href}>
                       <SidebarMenuButton isActive={pathname === item.href} tooltip={item.label}>
                         <item.icon className="h-4 w-4" />
                         <span>{item.label}</span>
@@ -58,7 +58,7 @@ export function AppSidebar({ menuItems, coreComponentItems }: AppSidebarProps) {
               <SidebarMenu>
                 {coreComponentItems.map((item) => (
                   <SidebarMenuItem key={item.href}>
-                    <Link passHref legacyBehavior href={item.href}>
+                    <Link href={item.href}>
                       <SidebarMenuButton isActive={pathname === item.href} tooltip={item.label}>
                         <item.icon className="h-4 w-4" />
                         <span>{item.label}</span>
